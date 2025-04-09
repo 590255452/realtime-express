@@ -9,13 +9,15 @@ import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
 import path from "path";
 
-const __dirname = path.resolve(); // 在es module中没有__dirname
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../frontend/dist")));
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-    });
-}
+
+// 前后端分离部署不需要这个代码
+// const __dirname = path.resolve(); // 在es module中没有__dirname
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(__dirname, "../frontend/dist")));
+//     app.get("*", (req, res) => {
+//         res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+//     });
+// }
 
 // TODO 顺序一定要正确 解析json请求(请求体最大数据) 跨域
 app.use(

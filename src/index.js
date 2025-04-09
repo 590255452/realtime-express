@@ -22,10 +22,7 @@ import path from "path";
 // TODO 顺序一定要正确 解析json请求(请求体最大数据) 跨域
 app.use(
     cors({
-        origin: [
-            "http://localhost:5173",
-            "https://realtime-react-production.up.railway.app",
-        ],
+        origin:"https://realtime-react-production.up.railway.app",
         credentials: true,
     })
 )

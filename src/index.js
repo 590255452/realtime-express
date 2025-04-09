@@ -24,7 +24,7 @@ app.use(cookieParser())
         cors({
             origin: [
                 "http://localhost:5173",
-                "https://realtime-express-production.up.railway.app/",
+                "https://realtime-express-production.up.railway.app",
             ],
             credentials: true,
         })

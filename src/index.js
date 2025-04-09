@@ -18,17 +18,18 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // TODO 顺序一定要正确 解析json请求(请求体最大数据) 跨域
-app.use(cookieParser())
-    .use(express.json({ limit: "10mb" }))
-    .use(
-        cors({
-            origin: [
-                "http://localhost:5173",
-                "https://realtime-react-production.up.railway.app",
-            ],
-            credentials: true,
-        })
-    );
+app.use(
+    cors({
+        origin: [
+            "http://localhost:5173",
+            "https://realtime-react-production.up.railway.app",
+        ],
+        credentials: true,
+    })
+)
+    .use(cookieParser())
+    .use(express.json({ limit: "10mb" }));
+
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 

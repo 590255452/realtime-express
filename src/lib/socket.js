@@ -1,5 +1,4 @@
-// 创建express服务器和http服务器并相互绑定，使用socket.io监听WebSocket(即socket.io-client)，当有客户端连接时打印id
-
+// 创建express实例并绑定到http服务器，创建io实例并与http绑定。监听连接ebSocket客户端(即socket.io-client)事件，打印连接信息并获取用户信息，广播getOnlineUsers给所有客户端，断开连接事件
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
@@ -12,7 +11,9 @@ const io = new Server(server, {
         origin: [
             "http://localhost:5173",
             "https://realtime-react-production.up.railway.app",
+            "https://realtime-chat-production-f8de.up.railway.app",
         ],
+        credentials: true,
     },
 });
 const userSocketMap = {};

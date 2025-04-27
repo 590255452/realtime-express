@@ -8,8 +8,8 @@ export const generateToken = (userId, res) => {
     res.cookie("jwt", token, {
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true, // 防止XSS攻击
-        sameSite: "none", // 防止CSRF攻击
-        secure: process.env.NODE_ENV === "production", // 只有在生产环境中使用https传输cookie
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "strict", // 浏览器携带cookie，防止CSRF攻击（strict同站请求时携带、lax同站和跨站get请求、none跨站请求）
+        secure: process.env.NODE_ENV === "production", // 浏览器是否只能在https下发送cookie
     });
     return token;
 };

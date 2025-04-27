@@ -6,7 +6,7 @@ import { getReceiverSocketId, io } from "../lib/socket.js";
 const getUsersForSidebar = async (req, res) => {
     try {
         const loggedInUserId = req.user._id;
-        // TODO 查询除了当前登录用户的所有用户，并排除密码字段
+        // 查询除了当前登录用户的所有用户，并排除密码字段
         const filteredUsers = await User.find({
             _id: { $ne: loggedInUserId },
         }).select("-password");

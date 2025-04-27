@@ -1,11 +1,17 @@
-import { connectDB } from "../lib/db";
-import User from "../models/user.model";
+import dotenv from "dotenv";
+dotenv.config();
+import { connectDB } from "../lib/db.js";
+import User from "../models/user.model.js";
 
-import { config } from "dotenv";
-config();
-
-const seedUsers = [];
-
+// 定义种子用户，用户开发时模拟多个用户账户，需要单独执行
+const seedUsers = [
+    {
+        fullName: "测试用户2",
+        email: "hahah@example.com",
+        password: "123456",
+        profilePic: "",
+    },
+];
 const seedDatabase = async () => {
     try {
         await connectDB();

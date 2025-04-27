@@ -26,7 +26,7 @@ const signup = async (req, res) => {
         const newUser = new User({ fullName, email, password: hashedPassword });
 
         if (newUser) {
-            // generate jwt token here
+            // 生成jwt token
             generateToken(newUser._id, res);
             await newUser.save();
             res.status(201).json({
@@ -48,7 +48,7 @@ const signup = async (req, res) => {
         });
     }
 };
-
+// BUG generateToken返回的token并没有使用
 const login = async (req, res) => {
     const { email, password } = req.body;
     try {
